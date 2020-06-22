@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Simon</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="nav-container">
+      <a class="nav-link" href="index.html">Home</a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="dice.html">Dice</a></li>
+        <li><a class="nav-link" href="drum.html">Drum</a></li>
+        <li><a class="nav-link" href="simon.html">Simon</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="game-container">
+    <h1 class="game-h1">SIMON</h1>
+    <button class="game-btn btn" type="button">Play</button>
+
+    <div class="simon-row">
+      <div id="green" class="box green"></div>
+      <div id="red" class="box red"></div>
+    </div>
+    <div class="simon-row">
+      <div id="yellow" class="box yellow"></div>
+      <div id="blue" class="box blue"></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <a class="contact-email" href="mailto:leunah76@gmail.com">CONTACT</a>
+    <h6 class="copyright" onmouseover="get_year()">Copyright © eunah.tech <span id="year"></span></h6>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    let gamePattern = [];
+    let userClickedPattern = [];
+    let buttonColors = ["red", "blue", "green", "yellow"];
+    let started = false;
+    let level = 0;
+
+    document.querySelector('.game-btn').onclick = function() {
+      if (!started) {
+        $("h1").text("Level " + level);
+        nextSequence();
+        started = true;
+      }
+    }
+
+    function nextSequence() {
+      userClickedPattern = [];
+      $("h1").text("Level " + level);
+      level++;
+      let randomNumber = Math.floor(Math.random() * 4);
+      let randomChosenColor = buttonColors[randomNumber];
+      gamePattern.push(randomChosenColor);
+      $("#" + randomChosenColor).css("background", "#03182B").delay(100).queue(function(d) {
+        $(this).css("background", "");
+        $(this).dequeue();
+        playSound(randomChosenColor);
+      });
+    }
+
+    $(".box").click(function handler() {
+      let userChosenColor = this.id;
+      userClickedPattern.push(userChosenColor);
+      playSound(userChosenColor);
+      animatePress(userChosenColor);
+      checkAnswer(userClickedPattern.length);
+    });
+
+    function playSound(name) {
+      let soundToPlay = new Audio("images/" + name + ".mp3");
+      soundToPlay.play();
+    }
+
+    function animatePress(currentColor) {
+      $("." + currentColor).addClass("simon-pressed");
+      setTimeout(function() {
+        $("." + currentColor).removeClass("simon-pressed");
+      }, 100);
+    };
+
+    function checkAnswer(currentLevel) {
+      if (userClickedPattern[currentLevel - 1] === gamePattern[currentLevel - 1]) {
+        if (userClickedPattern.length === gamePattern.length) {
+          setTimeout(function() {
+            nextSequence();
+          }, 1000);
+        }
+      } else {
+        let failSound = new Audio("images/wrong.mp3");
+        failSound.play();
+        $("body").addClass("game-over");
+        setTimeout(function() {
+          $("body").removeClass("game-over");
+        }, 200);
+
+        $("h1").text("Game over! Restart");
+        startOver();
+      }
+
+    }
+
+    function startOver() {
+      level = 0;
+      gamePattern = [];
+      started = false;
+    }
+
+
+    function get_year() {
+      const day = new Date();
+      const year = day.getFullYear();
+      document.querySelector('#year').innerHTML = year;
+    }
+  </script>
+
+</body>
+
+</html>

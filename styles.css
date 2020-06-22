@@ -1,0 +1,215 @@
+/* Home */
+body {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-family: 'Montserrat', serif;
+}
+h1 {
+  color: white;
+  font-family: 'Dancing Script', cursive;
+  font-size: 5.625em;
+}
+h2 {
+  color: white;
+}
+h3 {
+  color: teal;
+  font-size: 3.125rem;
+  font-weight: normal;
+  margin: 0 auto 0 auto;
+}
+h4 {
+  color: teal;
+  font-size: 1.875rem;
+  font-weight: normal;
+}
+p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+a {
+  color: white;
+  font-size: 40px;
+  text-decoration: none;
+}
+a:hover {
+  color: deeppink;
+  text-decoration: none;
+}
+hr {
+  border: 5px dotted teal;
+  border-bottom: none;
+  width: 5%;
+  margin: 100px auto;
+  }
+header {
+  background-color: teal;
+  display: flex;
+  align-items: center;
+  }
+.nav-container, .nav-links {
+  display: flex;
+  flex: 1;
+ }
+.nav-links {
+  justify-content: space-around;
+  list-style: none;
+  }
+.top-container {
+  background-color: teal;
+  position: relative;
+  padding: 100px 0;
+  width: 100%;
+}
+.home-img {
+  width: 80%;
+  margin: 25px auto 25px;
+}
+
+/* Games */
+.btn {
+  background-color: teal;
+  background-image: linear-gradient(to bottom, #11CDD4, teal);
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  font-size: 16px;
+}
+.btn:hover {
+  background-color: #30E3CB;
+  background-image: linear-gradient(to bottom, #30E3CB, #2BC4AD);
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  font-size: 16px;
+}
+.game-container {
+  width: 80%;
+  margin: 50px auto;
+  text-align: center;
+}
+.game-h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 5rem;
+  color: teal;
+}
+.game-btn {
+  margin: 30px auto;
+}
+
+/* Dice */
+.dice-img {
+  width: 80%;
+  margin-bottom: 30px;
+}
+
+/* Drum */
+.drum-row {
+  text-align: center;
+  padding: 30px;
+}
+.drum {
+  background-color: white;
+  outline: none;
+  border: 10px solid black;
+  font-size: 5rem;
+  color: deeppink;
+  border-radius: 15px;
+  line-height: 3;
+  margin: auto;
+}
+.t {
+  background-image: url(images/tom.png);
+  background-size: cover;
+}
+.f {
+  background-image: url(images/floor.png);
+  background-size: cover;
+}
+.s {
+  background-image: url(images/snare.png);
+  background-size: cover;
+}
+.b {
+  background-image: url(images/bass.png);
+  background-size: cover;
+}
+.h {
+  background-image: url(images/hihat.png);
+  background-size: cover;
+}
+.c {
+  background-image: url(images/crash.png);
+  background-size: cover;
+}
+.pressed {
+  box-shadow: 0 3px 4px 0 #DBEDF3;
+  opacity: 0.5;
+}
+
+/* Simon */
+.simon-row {
+  margin: auto;
+}
+.box {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+    border-radius: 20%;
+}
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
+.blue {
+  background-color: blue;
+}
+.yellow {
+  background-color: yellow;
+}
+.simon-pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+/* Footer Section */
+footer {
+  background-color: teal;
+  color: white;
+  padding: 50px 0 50px;
+}
+.contact{
+  padding: 5% 0 5%;
+  text-align: center;
+}
+.copyright {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 991px) {
+
+ .contact-email, .copyright {
+    font-size: 30px;
+  }
+
+}

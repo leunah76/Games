@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <title>Games</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a class="nav-link" href="index.html">Home</a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="dice.html">Dice</a></li>
+        <li><a class="nav-link" href="drum.html">Drum</a></li>
+        <li><a class="nav-link" href="simon.html">Simon</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="top-container">
+    <h1>Games</h1>
+    <img class="home-img" src="images/dice.png" href="dice.html" alt="games-img">
+    <img class="home-img" src="images/drum.png" alt="games-img">
+    <img class="home-img" src="images/simon.png" alt="games-img">
+  </div>
+
+  <footer>
+    <a class="contact-email" href="mailto:leunah76@gmail.com">CONTACT</a>
+    <h6 class="copyright" onmouseover="get_year()">Copyright © eunah.tech <span id="year"></span></h6>
+  </footer>
+
+  <script>
+    function get_year() {
+      const day = new Date();
+      const year = day.getFullYear();
+      document.querySelector('#year').innerHTML = year;
+    }
+  </script>
+
+</body>
+
+</html>

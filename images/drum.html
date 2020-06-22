@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+   <head>
+       <meta charset="utf-8">
+       <title>Drum</title>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+       <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat&display=swap" rel="stylesheet">
+       <link rel="stylesheet" href="styles.css">
+   </head>
+
+   <body>
+       <header>
+           <nav class="navbar navbar-expand-lg navbar-dark bg-teal">
+               <a class="navbar-brand" href="index.html">Home</a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                   <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                   <div class="navbar-nav">
+                       <a class="nav-item nav-link active" href="dice.html">Dice <span class="sr-only">(current)</span></a>
+                       <a class="nav-item nav-link active" href="drum.html">Drum</a>
+                       <a class="nav-item nav-link active" href="simon.html">Simon</a>
+                  </div>
+               </div>
+           </nav>
+       </header>
+           <div class="game-container">
+               <h1 class="game-h1">DRUM</h1>
+               <div class="row drum-row">
+                   <button class="col-lg-4 col-md-4 col-sm-6 t drum">t</button>
+                   <button class="col-lg-4 col-md-4 col-sm-6 f drum">f</button>
+                   <button class="col-lg-4 col-md-4 col-sm-6 s drum">s</button>
+                   <button class="col-lg-4 col-md-4 col-sm-6 b drum">b</button>
+                   <button class="col-lg-4 col-md-4 col-sm-6 h drum">h</button>
+                   <button class="col-lg-4 col-md-4 col-sm-6 c drum">c</button>
+               </div>
+               <h5>Drum images by matusiak from PixelSquid</h5>
+           </div>
+
+
+
+
+       <footer>
+           <h6 onmouseover="get_year()">Copyright © Eunah Lee <span id="year"></span></h6>
+       </footer>
+
+       <script>
+           let numberOfDrums = document.querySelectorAll(".drum").length;
+
+           for (let i=0; i<numberOfDrums; i++){
+               document.querySelectorAll(".drum")[i].addEventListener("click", function(){
+
+                   let buttonLetter = this.innerHTML;
+                   this.style.color = "red";
+                   makeSound(this.innerHTML);
+                   makeAnimation(this.innerHTML);
+               })
+            }
+
+           function makeSound(key){
+               this.key = key;
+               switch (key) {
+                   case "t":
+                       let tomSound = new Audio("images/tom.mp3");
+                       tomSound.play();
+                   break;
+                   case "f":
+                       let floorSound = new Audio("images/floor.mp3");
+                       floorSound.play();
+                   break;
+                   case "s":
+                       let snareSound = new Audio("images/snare.mp3");
+                       snareSound.play();
+                   break;
+                   case "b":
+                       let bassSound = new Audio("images/bass.mp3");
+                       bassSound.play();
+                   break;
+                   case "h":
+                       let hihatSound = new Audio("images/hihat.mp3");
+                       hihatSound.play();
+                   break;
+                   case "c":
+                       let crashSound = new Audio("images/crash.mp3");
+                       crashSound.play();
+                   break;
+                   default:
+                       console.log("no sound");
+               }
+           }
+
+           document.addEventListener("keypress", function(event){
+               makeSound(event.key);
+               makeAnimation(event.key);
+           })
+
+           function makeAnimation(key){
+               let animated = document.querySelector("." + key);
+               animated.classList.add("pressed");
+               setTimeout(function(){
+               animated.classList.remove("pressed"); }, 100);
+           }
+
+           function get_year() {
+               const day = new Date();
+               const year = day.getFullYear();
+               document.querySelector('#year').innerHTML = year;
+           }
+
+       </script>
+
+    </body>
+
+</html>
